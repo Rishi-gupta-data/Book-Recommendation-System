@@ -123,6 +123,3 @@ No specific hardware requirements are necessary for this project beyond the deve
 - The dataset used in the system is assumed to be of high quality and contain accurate ratings.
 - Dependencies on Python libraries such as Pandas, Scikit-learn, and Matplotlib will be installed correctly.
 
----
-
-This SRS document provides a comprehensive overview of your Book Recommendation System, including functional and non-functional requirements, system features, and external interfaces. Let me know if you need any adjustments!
