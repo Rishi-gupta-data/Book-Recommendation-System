@@ -20,7 +20,7 @@ sdist/
 var/
 
 # 🚫 Virtual environments
-env/
+env/.
 venv/
 ENV/
 book_recommender/
