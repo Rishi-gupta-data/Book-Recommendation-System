@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Book Recommender System</h1>
+        
+        <!-- User Recommendations Form -->
+        <div class="form-section">
+            <h2>Get Personalized Recommendations</h2>
+            <form method="POST" class="recommendation-form">
+                <div class="form-group">
+                    <label for="user_id">Enter User ID:</label>
+                    <input type="number" name="user_id" id="user_id" required 
+                           aria-label="User ID input">
+                    <button type="submit">Get Recommendations</button>
+                </div>
+            </form>
+            
+            <div class="valid-users" aria-label="List of valid user IDs">
+                <p>Valid User IDs: {{ valid_users|join(', ') }}</p>
+            </div>
+        </div>
+
+        <!-- Similar Books Form -->
+        <div class="form-section">
+            <h2>Find Similar Books</h2>
+            <form method="POST" class="similar-books-form">
+                <div class="form-group">
+                    <label for="isbn">Enter ISBN:</label>
+                    <input type="text" name="isbn" id="isbn" required 
+                           aria-label="ISBN input">
+                    <button type="submit">Find Similar</button>
+                </div>
+            </form>
+        </div>
+
+        {% if error %}
+        <div class="error-message" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        {% if recommendations %}
+        <div class="results-section">
+            <h2>Recommended Books</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Year</th>
+                            <th>Publisher</th>
+                            <th>Predicted Rating</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in recommendations %}
+                        <tr>
+                            <td>{{ book.title }}</td>
+                            <td>{{ book.author }}</td>
+                            <td>{{ book.year }}</td>
+                            <td>{{ book.publisher }}</td>
+                            <td>{{ "%.2f"|format(book.predicted_rating) }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if similar_books %}
+        <div class="results-section">
+            <h2>Similar Books</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Year</th>
+                            <th>Publisher</th>
+                            <th>Similarity Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in similar_books %}
+                        <tr>
+                            <td>{{ book.title }}</td>
+                            <td>{{ book.author }}</td>
+                            <td>{{ book.year }}</td>
+                            <td>{{ book.publisher }}</td>
+                            <td>{{ "%.2f"|format(book.similarity_score) }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
