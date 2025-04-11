@@ -1,37 +1,57 @@
-# Python
+# 🔥 Python bytecode
 __pycache__/
 *.py[cod]
 *$py.class
+
+# 🔁 Compiled objects
 *.so
 .Python
-env/
+
+# 📦 Packaging
 build/
-develop-eggs/
 dist/
-downloads/
-eggs/
+*.egg-info/
 .eggs/
-lib/
-lib64/
-parts/
+*.egg
+.installed.cfg
+develop-eggs/
+downloads/
 sdist/
 var/
-*.egg-info/
-.installed.cfg
-*.egg
 
-# Virtual Environment
+# 🚫 Virtual environments
+env/
 venv/
 ENV/
 book_recommender/
 
-# IDE
-.idea/
+# 💻 IDEs and editor junk
 .vscode/
-*.swp
+.idea/
 *.swo
+*.swp
 
-# Project specific
-data/raw/
+# 📊 Logs and model artifacts
+logs/
+*.log
 models/*.pkl
-logs/*.log
+
+# 🔒 Sensitive files
+.env
+
+# 📁 Data files (raw or large)
+data/raw/
+data/**/*.zip
+data/**/*.rar
+data/**/*.tar.gz
+
+# 📓 Jupyter checkpoints
+.ipynb_checkpoints/
+
+# 🧪 Test cache
+.pytest_cache/
+coverage/
+
+# 🧼 System files
+.DS_Store
+Thumbs.db
