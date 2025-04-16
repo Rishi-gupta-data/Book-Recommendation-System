@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🔥 Python bytecode
 __pycache__/
 *.py[cod]
@@ -55,3 +56,12 @@ coverage/
 # 🧼 System files
 .DS_Store
 Thumbs.db
+=======
+.env
+
+# Ignore all pickle files
+*.pkl
+
+# But keep the directory
+!.gitkeep
+>>>>>>> 7b5d19f (Initial commit: Book Recommendation System with collaborative filtering)

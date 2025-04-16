@@ -77,6 +77,7 @@ def preprocess_data(books_df, users_df, ratings_df, save=True):
 def load_processed_data():
     """Load preprocessed data from the processed directory"""
     try:
+<<<<<<< HEAD
         base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         processed_dir = os.path.join(base_dir, "data", "processed")
         
@@ -84,6 +85,15 @@ def load_processed_data():
         books = pd.read_csv(os.path.join(processed_dir, "processed_books.csv"))
         ratings = pd.read_csv(os.path.join(processed_dir, "processed_ratings.csv"))
         users = pd.read_csv(os.path.join(processed_dir, "processed_users.csv"))
+=======
+        base_dir = Path(__file__).parent.parent
+        processed_dir = base_dir / "data" / "processed"
+        
+        # Load processed datasets
+        books = pd.read_csv(processed_dir / "processed_books.csv")
+        ratings = pd.read_csv(processed_dir / "processed_ratings.csv")
+        users = pd.read_csv(processed_dir / "processed_users.csv")
+>>>>>>> 7b5d19f (Initial commit: Book Recommendation System with collaborative filtering)
         
         return books, users, ratings
     except Exception as e:

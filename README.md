@@ -1,5 +1,6 @@
 # 📚 Book Recommendation System
 
+<<<<<<< HEAD
 This project implements a **Book Recommendation System** using collaborative filtering techniques (KNN & SVD) and is served via a Flask-based web interface.
 
 ## ✨ Features
@@ -43,6 +44,41 @@ This project implements a **Book Recommendation System** using collaborative fil
 ├── 📦 requirements.txt              # Python dependencies
 └── 📦 setup.py                      # (Optional) installable packaging script
 ```
+=======
+A sophisticated book recommendation engine powered by collaborative filtering techniques (KNN & SVD), featuring an intuitive web interface.
+
+## ✨ Features
+
+- 🤖 Intelligent Recommendations using Collaborative Filtering
+- 📊 Similar Books Discovery via ISBN
+- 🌐 Interactive Web Interface
+- 🔑 API Endpoints with Rate Limiting
+- 📈 Performance Metrics (RMSE, MAE)
+- 🔄 Efficient Data Processing Pipeline
+
+## 🛠️ Tech Stack
+
+- Python 3.8+
+- Flask
+- Pandas & NumPy
+- scikit-learn
+- HTML/CSS
+- Font Awesome
+
+## 📁 Project Structure
+📦 BookRecommendationSystem
+├── 📂 data/                  # Dataset files
+│   ├── 📝 raw/              # Original data
+│   └── 📊 processed/        # Cleaned data
+├── 📂 frontend/             # Web interface
+│   ├── 🎨 static/          # Assets
+│   └── 📄 templates/       # HTML files
+├── 💾 models/              # Trained models
+├── 📓 notebooks/           # Jupyter notebooks
+├── 🔧 src/                 # Source code
+└── 📝 app.py              # Main application
+
+>>>>>>> 7b5d19f (Initial commit: Book Recommendation System with collaborative filtering)
 
 ## 🚀 How to Run
 
@@ -51,4 +87,8 @@ pip install -r requirements.txt
 python src/webapp/app.py
 ```
 
+<<<<<<< HEAD
 Then visit 👉 http://localhost:5000
+=======
+Then visit 👉 http://localhost:5000
+>>>>>>> 7b5d19f (Initial commit: Book Recommendation System with collaborative filtering)

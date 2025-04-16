@@ -1,0 +1,745 @@
+Okay, let's break down the improvements step-by-step, starting with the most critical issues identified in the review.
+Goal: Make the code consistent, fix the model loading/usage mismatch, improve efficiency, and follow best practices.
+Step 1: Fix Configuration Duplication and Path Usage in data_processing.py
+Problem: data_processing.py redefines DATA_CONFIG and uses hardcoded paths within it, ignoring the central config.py. This leads to inconsistency and potential errors.
+File(s) to Modify: src/data_processing.py
+Changes:
+Remove Local DATA_CONFIG: Delete the entire DATA_CONFIG = {...} dictionary from the top of data_processing.py.
+Import from Central Config: Add the following imports at the top:
+import os
+import pandas as pd
+import numpy as np
+# Removed sys import as it wasn't used
+from pathlib import Path
+# Import necessary items from the config module
+from .config import DATA_CONFIG, DATA_PROCESSING, PROCESSED_DATA_DIR, BASE_DIR
+Use code with caution.
+Python
+Update Function Defaults: Change the default config arguments in the cleaning functions to use the imported DATA_CONFIG:
+# Example for clean_users_data (apply similarly to others)
+def clean_users_data(users_df, config=DATA_CONFIG['users']):
+    # ... rest of the function
+
+# Example for filter_data
+def filter_data(books, users, ratings, 
+                min_book_ratings=DATA_PROCESSING['min_book_ratings'], 
+                min_user_ratings=DATA_PROCESSING['min_user_ratings'], 
+                config=DATA_CONFIG):
+    # ... rest of the function
+Use code with caution.
+Python
+Update Saving Paths: Modify the preprocess_data function to use the imported PROCESSED_DATA_DIR:
+def preprocess_data(books_df, users_df, ratings_df, save=True):
+    """Main preprocessing pipeline."""
+    try:
+        # Use imported DATA_CONFIG for column names implicitly via cleaning functions
+        cleaned_users = clean_users_data(users_df) 
+        cleaned_books = clean_books_data(books_df)
+        cleaned_ratings = clean_ratings_data(ratings_df)
+
+        # Use imported DATA_PROCESSING params implicitly via filter_data
+        filtered_books, filtered_users, filtered_ratings = filter_data(
+            cleaned_books, cleaned_users, cleaned_ratings 
+        )
+
+        if save:
+            # Use imported PROCESSED_DATA_DIR
+            PROCESSED_DATA_DIR.mkdir(parents=True, exist_ok=True) 
+            filtered_books.to_csv(PROCESSED_DATA_DIR / "processed_books.csv", index=False)
+            filtered_users.to_csv(PROCESSED_DATA_DIR / "processed_users.csv", index=False)
+            filtered_ratings.to_csv(PROCESSED_DATA_DIR / "processed_ratings.csv", index=False)
+
+        return filtered_books, filtered_users, filtered_ratings
+
+    except Exception as e:
+        print(f"Error in preprocessing data: {str(e)}")
+        return None, None, None
+Use code with caution.
+Python
+Update Loading Paths: Modify load_processed_data to use PROCESSED_DATA_DIR:
+def load_processed_data():
+    """Load preprocessed data from the processed directory"""
+    try:
+        # Use imported PROCESSED_DATA_DIR
+        books_path = PROCESSED_DATA_DIR / "processed_books.csv"
+        ratings_path = PROCESSED_DATA_DIR / "processed_ratings.csv"
+        users_path = PROCESSED_DATA_DIR / "processed_users.csv"
+
+        if not all([p.exists() for p in [books_path, ratings_path, users_path]]):
+             raise FileNotFoundError("One or more processed data files not found.")
+
+        books = pd.read_csv(books_path)
+        ratings = pd.read_csv(ratings_path)
+        users = pd.read_csv(users_path)
+        
+        return books, users, ratings
+    except Exception as e:
+        print(f"Error loading processed data: {e}")
+        return None, None, None
+Use code with caution.
+Python
+Reasoning: Ensures configuration is centralized, paths are handled robustly using pathlib and config.py, reducing errors and improving maintainability.
+Step 2: Fix Model Save/Load Mismatch
+Problem: The Colab notebook saves latent factors U and Vt from SGD. The recommender.py tries to load U, sigma, Vt (like full SVD) and accesses them incorrectly within a nested 'model' dictionary.
+File(s) to Modify: src/recommender.py
+Changes:
+Modify load_model: Adjust how the dictionary keys are accessed and remove the sigma dependency. Remove the pre-calculation of predicted_ratings.
+def load_model(self) -> bool:
+    """Load the trained model and its metadata (U, Vt, mappings from SGD)."""
+    try:
+        if not self.model_path.exists():
+             logger.error(f"Model file not found: {self.model_path}")
+             return False
+             
+        with open(self.model_path, 'rb') as f:
+            model_info = pickle.load(f)
+
+        # Check for expected keys directly from the saved dictionary
+        required_keys = ["U", "Vt", "user_mapping", "item_mapping"]
+        if not all(key in model_info for key in required_keys):
+            logger.error(f"Model file {self.model_path} is missing required keys.")
+            return False
+
+        # Assign attributes directly from model_info
+        self.model_data = model_info # Store the whole dict for access
+        self.user_mapping = model_info['user_mapping']
+        self.item_mapping = model_info['item_mapping']
+        
+        # *** Remove the pre-calculation of the full matrix ***
+        # self.predicted_ratings = np.dot(np.dot(U, sigma), Vt) <-- REMOVE THIS
+
+        # Store factors for on-demand calculation
+        self.U = model_info['U']
+        self.Vt = model_info['Vt'] # Note: notebook saves V.T as 'Vt'
+
+        logger.info(f"Model loaded successfully from {self.model_path}")
+        return True
+        
+    except FileNotFoundError: # Keep this for redundancy, although checked above
+        logger.error(f"Model file not found: {self.model_path}")
+        return False
+    except pickle.UnpicklingError:
+         logger.error(f"Error unpickling model file: {self.model_path}. File might be corrupted.")
+         return False
+    except Exception as e:
+        logger.error(f"Error loading model: {str(e)}")
+        return False
+Use code with caution.
+Python
+Remove predicted_ratings Attribute: Delete the line self.predicted_ratings = None from __init__. Add self.U = None and self.Vt = None.
+def __init__(self, model_path: Optional[Union[str, Path]] = None):
+    """Initialize the recommender system."""
+    self.model_path = Path(model_path) if model_path else MODEL_DIR / "latest_model.pkl"
+    self.model_data = None
+    self.user_mapping = None
+    self.item_mapping = None
+    # Remove: self.predicted_ratings = None 
+    self.U = None  # Add
+    self.Vt = None # Add
+Use code with caution.
+Python
+Reasoning: Aligns the loading logic with the actual structure of the saved model file created by the training notebook. Prevents errors caused by trying to access non-existent keys (sigma, nested 'model') or incorrect dictionary structure. Prepares for memory optimization in the next step.
+Step 3: Optimize Recommender Memory Usage
+Problem: The original recommender.py calculated and stored the entire dense predicted_ratings matrix, which is very memory-intensive.
+File(s) to Modify: src/recommender.py
+Changes:
+Modify get_recommendations: Calculate predictions only for the requested user on-the-fly using the stored U and Vt factors.
+def get_recommendations(
+    self,
+    user_id: int,
+    books_df: pd.DataFrame,
+    n_recommendations: int = SVD_PARAMS['default_recommendations'],
+    min_rating_threshold: float = SVD_PARAMS['min_rating_threshold']
+) -> List[Dict]:
+    """Get personalized book recommendations for a user."""
+    try:
+        # Ensure model is loaded (load_model now stores self.U, self.Vt)
+        if self.model_data is None or self.U is None or self.Vt is None:
+            if not self.load_model():
+                logger.error("Cannot get recommendations: Model not loaded.")
+                return []
+        
+        if user_id not in self.user_mapping:
+            logger.warning(f"User ID {user_id} not found in training data")
+            return []
+        
+        user_idx = self.user_mapping[user_id]
+        
+        # *** Calculate predictions for this user only ***
+        user_predictions = np.dot(self.U[user_idx, :], self.Vt) 
+        
+        # Get indices of items, sorted by predicted rating
+        # We don't need to exclude already rated items here, but could add if needed
+        top_n_idx = np.argsort(user_predictions)[::-1]
+        
+        recommendations = []
+        # Pre-create reverse mapping for efficiency
+        reverse_item_mapping = {v: k for k, v in self.item_mapping.items()} 
+        # Pre-index books_df for faster lookups
+        books_df_indexed = books_df.set_index('ISBN') 
+
+        processed_items = 0
+        for item_idx in top_n_idx:
+            # Optimization: Stop early if we've processed many items without meeting criteria
+            processed_items += 1
+            if processed_items > len(self.item_mapping) * 0.1 and len(recommendations) < n_recommendations / 2:
+                 logger.warning(f"Processed 10% of items for user {user_id}, but found few recommendations. Stopping early.")
+                 break
+            if len(recommendations) >= n_recommendations:
+                 break # Found enough recommendations
+
+            predicted_rating = user_predictions[item_idx]
+            
+            if predicted_rating < min_rating_threshold:
+                 # Since items are sorted, subsequent items will likely also be below threshold
+                 # Optional: break here if performance is critical and threshold is high
+                 continue 
+                
+            try:
+                isbn = reverse_item_mapping[item_idx]
+                # Use pre-indexed DataFrame for faster lookup
+                book_info = books_df_indexed.loc[isbn] 
+                
+                recommendations.append({
+                    'isbn': isbn,
+                    'title': book_info['Book-Title'],
+                    'author': book_info['Book-Author'],
+                    'predicted_rating': float(predicted_rating),
+                    'year': book_info['Year-Of-Publication'],
+                    'publisher': book_info['Publisher']
+                })
+            except KeyError:
+                logger.warning(f"ISBN {isbn} (index {item_idx}) found in model but not in provided books_df.")
+            except Exception as book_lookup_error:
+                 logger.error(f"Error looking up book info for ISBN {isbn}: {book_lookup_error}")
+
+        if not recommendations:
+             logger.info(f"No recommendations found for user {user_id} above threshold {min_rating_threshold}.")
+
+        return recommendations
+        
+    except Exception as e:
+        logger.exception(f"Error getting recommendations for user {user_id}: {str(e)}") # Use logger.exception to include traceback
+        return []
+Use code with caution.
+Python
+Reasoning: Dramatically reduces memory consumption by avoiding the creation of the full n_users x n_items dense prediction matrix. Calculations are done only when needed for a specific user. Adds minor optimizations like pre-indexing the books DataFrame.
+Step 4: Standardize Path Handling in data_loading.py
+Problem: load_kaggle_dataset uses less robust os.path.join and relative path calculations instead of the config.py paths.
+File(s) to Modify: src/data_loading.py
+Changes:
+Import Config Paths: Add RAW_DATA_DIR to imports.
+from pathlib import Path
+from .config import RAW_DATA_DIR # Import the specific directory
+Use code with caution.
+Python
+Update load_kaggle_dataset Paths: Use RAW_DATA_DIR.
+def load_kaggle_dataset():
+    """Downloads and loads the book recommendation dataset."""
+    try:
+        # configure_kaggle() # Keep this if needed for download step (see Step 7)
+        
+        # Use RAW_DATA_DIR from config
+        data_dir = RAW_DATA_DIR 
+        data_dir.mkdir(parents=True, exist_ok=True) # Use pathlib's mkdir
+        
+        # Define file paths using pathlib
+        users_file = data_dir / "BX-Users.csv"
+        books_file = data_dir / "BX-Books.csv"
+        ratings_file = data_dir / "BX-Book-Ratings.csv"
+
+        if not all([f.exists() for f in [users_file, books_file, ratings_file]]):
+             # If files don't exist, maybe try downloading here? See Step 7
+             raise FileNotFoundError(f"One or more raw data files not found in {data_dir}. Run download script first?")
+
+        # Load the datasets with proper encoding and separator
+        users_df = pd.read_csv(users_file, 
+                             sep=';', 
+                             encoding='latin-1',
+                             on_bad_lines='skip',
+                             low_memory=False) # Add low_memory=False like in load_dataset
+        
+        books_df = pd.read_csv(books_file,
+                             sep=';',
+                             encoding='latin-1',
+                             on_bad_lines='skip',
+                             low_memory=False) 
+        
+        ratings_df = pd.read_csv(ratings_file,
+                               sep=';',
+                               encoding='latin-1',
+                               on_bad_lines='skip',
+                               low_memory=False)
+        
+        if books_df.empty or users_df.empty or ratings_df.empty:
+            raise ValueError("One or more datasets are empty after loading.")
+            
+        print("Raw datasets loaded successfully!")
+        return books_df, users_df, ratings_df
+        
+    except FileNotFoundError as fnf:
+         print(f"Error loading raw data: {fnf}")
+         return None, None, None
+    except Exception as e:
+        print(f"Error in data loading: {str(e)}")
+        return None, None, None
+Use code with caution.
+Python
+Update load_dataset Path Logic: Ensure it uses RAW_DATA_DIR correctly if the argument isn't provided or handle the relative path based on BASE_DIR. The current implementation using get_project_root() is already good. No changes needed here if data_dir argument defaults to config.RAW_DATA_DIR. Let's adjust the default.
+# In src/data_loading.py
+ from .config import RAW_DATA_DIR, BASE_DIR
+
+ # Change the default argument value
+ def load_dataset(data_dir=RAW_DATA_DIR): 
+    """Loads the book recommendation dataset from local CSV files."""
+    try:
+        # Ensure data_dir is a Path object relative to the project root if given as string
+        if isinstance(data_dir, str):
+            data_path = BASE_DIR / data_dir 
+        else: # Assume it's already a Path object like RAW_DATA_DIR
+            data_path = data_dir
+
+        # ... rest of the function remains the same ...
+
+    except Exception as e:
+        print(f"Error during data loading: {str(e)}")
+        return None, None, None
+Use code with caution.
+Python
+Reasoning: Consistent use of pathlib and configuration variables for all path operations enhances robustness and maintainability.
+Step 5: Refine Recommender Similarity Calculation
+Problem: get_similar_books uses the dot product, which doesn't account for vector magnitude. Cosine similarity is standard.
+File(s) to Modify: src/recommender.py
+Changes:
+Import cosine_similarity:
+from sklearn.metrics.pairwise import cosine_similarity
+Use code with caution.
+Python
+Modify get_similar_books: Calculate cosine similarity instead of dot product.
+def get_similar_books(
+    self,
+    isbn: str,
+    books_df: pd.DataFrame,
+    n_recommendations: int = SVD_PARAMS['default_recommendations']
+) -> List[Dict]:
+    """Find similar books based on latent factors using cosine similarity."""
+    try:
+        if self.model_data is None or self.Vt is None:
+            if not self.load_model():
+                 logger.error("Cannot get similar books: Model not loaded.")
+                 return []
+        
+        if isbn not in self.item_mapping:
+            logger.warning(f"ISBN {isbn} not found in training data")
+            return []
+        
+        item_idx = self.item_mapping[isbn]
+        
+        # Get the target item's factor vector (shape: (n_factors,))
+        # Vt is (n_factors, n_items), so we need the column
+        target_vector = self.Vt[:, item_idx].reshape(1, -1) 
+
+        # Calculate cosine similarity between the target vector and all item vectors
+        # self.Vt.T gives (n_items, n_factors)
+        all_item_vectors = self.Vt.T 
+        similarities = cosine_similarity(target_vector, all_item_vectors).flatten() # Get a 1D array
+
+        # Get top N similar books (argsort sorts ascending, need descending)
+        # Exclude the item itself (index item_idx, which will have similarity 1.0)
+        similar_idx = np.argsort(similarities)[::-1] 
+        
+        similar_books = []
+        reverse_item_mapping = {v: k for k, v in self.item_mapping.items()}
+        books_df_indexed = books_df.set_index('ISBN')
+
+        count = 0
+        for idx in similar_idx:
+            if idx == item_idx: # Skip the item itself
+                continue
+            if count >= n_recommendations:
+                break
+
+            try:    
+                similar_isbn = reverse_item_mapping[idx]
+                book_info = books_df_indexed.loc[similar_isbn]
+                
+                similar_books.append({
+                    'isbn': similar_isbn,
+                    'title': book_info['Book-Title'],
+                    'author': book_info['Book-Author'],
+                    'similarity_score': float(similarities[idx]),
+                    'year': book_info['Year-Of-Publication'],
+                    'publisher': book_info['Publisher']
+                })
+                count += 1
+            except KeyError:
+                 logger.warning(f"Similar ISBN {similar_isbn} (index {idx}) found in model but not in provided books_df.")
+            except Exception as book_lookup_error:
+                 logger.error(f"Error looking up book info for similar ISBN {similar_isbn}: {book_lookup_error}")
+
+        return similar_books
+        
+    except Exception as e:
+        logger.exception(f"Error finding similar books for ISBN {isbn}: {str(e)}")
+        return []
+Use code with caution.
+Python
+Reasoning: Uses a more standard and generally preferred metric for similarity based on vector orientation, ignoring magnitude differences.
+Step 6: Improve Training & Evaluation in Notebook
+Problem: The notebook evaluates the model only on the data it was trained on, giving an optimistic view of performance. It also calculates metrics on the full dense matrix, which is memory-intensive.
+File(s) to Modify: svd_training_colab.ipynb
+Changes:
+Add Train/Test Split: Before creating the sparse matrix, split the ratings DataFrame.
+# Add near the top imports
+from sklearn.model_selection import train_test_split 
+
+# ... after loading data ...
+print("✅ Data loaded successfully.")
+
+# Add Train/Test Split
+train_ratings, test_ratings = train_test_split(
+    ratings, 
+    test_size=0.2, # Use value from config if possible, or define here
+    random_state=42 # Use value from config if possible
+)
+print(f"Train set size: {len(train_ratings)}, Test set size: {len(test_ratings)}")
+
+# Create user/item mappings based on TRAINING data ONLY
+# Important: Ensure all users/items in test set are also in training set mappings
+# A safer approach might be to map based on the full 'ratings' df first, then split.
+# Let's stick to mapping based on train data for simplicity, but filter test data later.
+train_user_ids = train_ratings['User-ID'].unique()
+train_item_ids = train_ratings['ISBN'].unique()
+user_map = {uid: i for i, uid in enumerate(train_user_ids)}
+item_map = {iid: i for i, iid in enumerate(train_item_ids)}
+
+# Create TRAINING sparse matrix
+train_rows = train_ratings['User-ID'].map(user_map)
+train_cols = train_ratings['ISBN'].map(item_map)
+train_data = train_ratings['Book-Rating'].astype(np.float32)
+
+# Filter out rows with NaN indices (users/items not in training map)
+valid_train_indices = ~train_rows.isna() & ~train_cols.isna()
+train_rows = train_rows[valid_train_indices]
+train_cols = train_cols[valid_train_indices]
+train_data = train_data[valid_train_indices]
+
+rating_matrix = csr_matrix((train_data, (train_rows.astype(int), train_cols.astype(int))), 
+                          shape=(len(train_user_ids), len(train_item_ids)))
+print("✅ Training Ratings matrix created.")
+n_users, n_items = rating_matrix.shape # Use shape from training matrix
+
+# Initialize latent matrices U and V based on TRAINING matrix dimensions
+U = np.random.normal(scale=1. / SVD_PARAMS['n_factors'], size=(n_users, SVD_PARAMS['n_factors']))
+V = np.random.normal(scale=1. / SVD_PARAMS['n_factors'], size=(n_items, SVD_PARAMS['n_factors']))
+
+# Train using SGD on TRAINING data
+coo = rating_matrix.tocoo() # Use training matrix COO format
+print("\n🚀 Starting training...")
+# ... (Keep the training loop as is) ...
+Use code with caution.
+Python
+Modify Evaluation Cell: Evaluate RMSE/MAE only on the test set interactions.
+# Evaluation Cell - AFTER training is complete
+
+print("\nEvaluating on Test Set...")
+test_user_map = user_map # Use the mapping from training
+test_item_map = item_map # Use the mapping from training
+
+# Map test data users/items to training indices
+test_rows = test_ratings['User-ID'].map(test_user_map)
+test_cols = test_ratings['ISBN'].map(test_item_map)
+test_data_actual = test_ratings['Book-Rating'].astype(np.float32)
+
+# Filter test data to include only users and items present in the training maps
+valid_test_indices = ~test_rows.isna() & ~test_cols.isna()
+test_rows_filtered = test_rows[valid_test_indices].astype(int)
+test_cols_filtered = test_cols[valid_test_indices].astype(int)
+test_data_actual_filtered = test_data_actual[valid_test_indices]
+
+if len(test_data_actual_filtered) == 0:
+     print("⚠️ No valid interactions found in the test set that map to the trained model's users/items.")
+else:
+    # Get predictions ONLY for the interactions in the test set
+    predictions = []
+    for u_idx, i_idx in zip(test_rows_filtered, test_cols_filtered):
+         # Ensure indices are within bounds (should be if mapping worked)
+         if 0 <= u_idx < U.shape[0] and 0 <= i_idx < V.shape[0]:
+              pred = np.dot(U[u_idx], V[i_idx])
+              predictions.append(pred)
+         else:
+              # This case shouldn't happen with the filtering, but as a safeguard
+              predictions.append(np.nan) # Or append global average rating
+
+    # Filter out any potential NaNs from predictions if safeguard triggered
+    valid_preds_indices = ~np.isnan(predictions)
+    predictions_filtered = np.array(predictions)[valid_preds_indices]
+    test_data_actual_final = test_data_actual_filtered[valid_preds_indices]
+    
+    if len(test_data_actual_final) > 0:
+         # Calculate RMSE and MAE on the test set predictions vs actuals
+         rmse = np.sqrt(mean_squared_error(test_data_actual_final, predictions_filtered))
+         mae = mean_absolute_error(test_data_actual_final, predictions_filtered)
+         print(f"\n✅ Test Set Evaluation Complete.\nRMSE: {rmse:.4f}, MAE: {mae:.4f}")
+    else:
+         print("⚠️ No valid predictions could be made for the filtered test set.")
+
+# Keep the training evaluation if desired (for comparison/sanity check)
+print("\nEvaluating on Training Set (for reference)...")
+train_predictions_on_train_data = []
+train_actuals_on_train_data = []
+for u, i, r in zip(coo.row, coo.col, coo.data):
+     pred = np.dot(U[u], V[i])
+     train_predictions_on_train_data.append(pred)
+     train_actuals_on_train_data.append(r)
+
+train_rmse = np.sqrt(mean_squared_error(train_actuals_on_train_data, train_predictions_on_train_data))
+train_mae = mean_absolute_error(train_actuals_on_train_data, train_predictions_on_train_data)
+print(f"✅ Training Set Evaluation Complete.\nRMSE: {train_rmse:.4f}, MAE: {train_mae:.4f}")
+Use code with caution.
+Python
+Reasoning: Provides a more realistic assessment of the model's ability to generalize to unseen data. Avoids high memory usage by calculating predictions only for the required test interactions.
+Step 7: Clean Up Data Loading & Add Download Option
+Problem: load_kaggle_dataset configures Kaggle but doesn't download. Its purpose overlaps with load_dataset.
+File(s) to Modify: src/data_loading.py
+Changes (Option 1: Combine & Add Download):
+Rename load_dataset to something like load_raw_data_from_files.
+Create a new function ensure_raw_data that checks for files and downloads if missing.
+import kaggle # Make sure kaggle library is installed
+# ... other imports ...
+from .config import RAW_DATA_DIR, BASE_DIR
+
+def configure_kaggle():
+    # ... (keep as is) ...
+
+# Renamed function
+def load_raw_data_from_files(data_dir=RAW_DATA_DIR):
+    """Loads the raw book recommendation dataset from local CSV files."""
+    # ... (logic from the original load_dataset, using data_dir) ...
+
+def ensure_raw_data(dataset_slug="arashnic/book-recommendation-dataset", destination_dir=RAW_DATA_DIR):
+     """Checks for raw data files, downloads from Kaggle if missing."""
+     destination_dir = Path(destination_dir)
+     destination_dir.mkdir(parents=True, exist_ok=True)
+
+     # Check if files exist (adjust filenames if needed)
+     expected_files = ["BX-Users.csv", "BX-Books.csv", "BX-Book-Ratings.csv"]
+     files_exist = all((destination_dir / f).exists() for f in expected_files)
+
+     if files_exist:
+          print("Raw data files already exist.")
+          return True
+     else:
+          print("Raw data files not found. Attempting download from Kaggle...")
+          try:
+               configure_kaggle()
+               print(f"Downloading {dataset_slug} to {destination_dir}...")
+               # Note: You might need to unzip after download depending on the dataset format
+               kaggle.api.dataset_download_files(dataset_slug, 
+                                                 path=destination_dir, 
+                                                 unzip=True, # Set to True if it's a zip
+                                                 quiet=False) 
+               print("Download complete.")
+               # Verify files after download
+               files_exist = all((destination_dir / f).exists() for f in expected_files)
+               if not files_exist:
+                    print("Error: Files not found even after download attempt.")
+                    return False
+               return True
+          except Exception as e:
+               print(f"Error downloading/extracting data from Kaggle: {e}")
+               print("Please ensure Kaggle API credentials are set correctly in .env")
+               print("and the dataset slug is correct.")
+               return False
+
+# Remove load_kaggle_dataset function entirely if using this approach
+
+if __name__ == "__main__":
+    # Test the download and load sequence
+    if ensure_raw_data():
+        books, users, ratings = load_raw_data_from_files()
+        if all(df is not None for df in [books, users, ratings]):
+            print("Raw data loaded successfully after check/download.")
+            print(f"Books shape: {books.shape}")
+            print(f"Users shape: {users.shape}")
+            print(f"Ratings shape: {ratings.shape}")
+    else:
+         print("Failed to ensure raw data presence.")
+Use code with caution.
+Python
+Reasoning: Creates a clear separation between ensuring data presence (downloading if needed) and loading data from files. Makes the process more automated. Requires kaggle package.
+Step 8: Correct if __name__ == "__main__": Test Blocks
+Problem: Test blocks in data_processing.py and recommender.py didn't load necessary prerequisite data or models.
+File(s) to Modify: src/data_processing.py, src/recommender.py
+Changes:
+data_processing.py: Load raw data first.
+if __name__ == "__main__":
+    print("Testing data processing pipeline...")
+    # Import the loading function
+    from .data_loading import ensure_raw_data, load_raw_data_from_files 
+    
+    # Ensure raw data exists (downloads if necessary)
+    if ensure_raw_data():
+        # Load raw data
+        raw_books, raw_users, raw_ratings = load_raw_data_from_files()
+
+        if all(df is not None for df in [raw_books, raw_users, raw_ratings]):
+            print("Raw data loaded. Starting preprocessing...")
+            # Pass loaded raw data to the preprocessing function
+            processed_books, processed_users, processed_ratings = preprocess_data(
+                raw_books, raw_users, raw_ratings, save=True # Test saving too
+            )
+            
+            if all(df is not None for df in [processed_books, processed_users, processed_ratings]):
+                print("Preprocessing successful!")
+                print(f"Processed Books shape: {processed_books.shape}")
+                print(f"Processed Users shape: {processed_users.shape}")
+                print(f"Processed Ratings shape: {processed_ratings.shape}")
+                
+                # Optional: Test loading the processed data back
+                print("Testing loading processed data...")
+                loaded_books, loaded_users, loaded_ratings = load_processed_data()
+                if all(df is not None for df in [loaded_books, loaded_users, loaded_ratings]):
+                     print("Processed data loaded back successfully.")
+                else:
+                     print("Failed to load processed data back.")
+            else:
+                print("Preprocessing failed.")
+        else:
+            print("Failed to load raw data for preprocessing test.")
+    else:
+         print("Failed to ensure raw data presence for preprocessing test.")
+Use code with caution.
+Python
+recommender.py: Load processed books and check for a model file. Use a known user ID from the processed data if possible.
+if __name__ == "__main__":
+    # Import function to load processed data
+    from .data_processing import load_processed_data 
+    from .config import MODEL_DIR # Import MODEL_DIR
+
+    print("Testing Recommender...")
+    
+    # Specify a model path to test (e.g., the one used in app.py or a default)
+    # Ensure this model file actually exists!
+    test_model_path = MODEL_DIR / "svd_model_20250409_125709.pkl" # Or latest_model.pkl
+    
+    if not test_model_path.exists():
+         print(f"Test model file not found at {test_model_path}. Cannot run tests.")
+    else:
+         print(f"Using model: {test_model_path}")
+         recommender = BookRecommender(model_path=test_model_path)
+         
+         # Load processed data needed for recommendations
+         books, users, ratings = load_processed_data()
+         
+         if books is None or users is None or ratings is None:
+              print("Failed to load processed data. Cannot run recommender tests.")
+         else:
+              print("Processed data loaded.")
+              # Attempt to load the model (already checks for existence inside)
+              if recommender.load_model():
+                   print("Model loaded successfully.")
+                   
+                   # --- Test user recommendations ---
+                   # Get a valid user ID known to be in the processed data and model
+                   if not ratings.empty:
+                        # Try a user known from the app's active_users list or just the first one
+                        test_user_id = ratings['User-ID'].iloc[0] 
+                        print(f"\nTesting recommendations for User ID: {test_user_id}")
+                        recommendations = recommender.get_recommendations(test_user_id, books, n_recommendations=5)
+                        
+                        if recommendations:
+                             print("Recommended books:")
+                             for rec in recommendations:
+                                  print(f"- {rec['title']} (ISBN: {rec['isbn']}) by {rec['author']} "
+                                        f"(predicted rating: {rec['predicted_rating']:.2f})")
+                        else:
+                             print(f"No recommendations found for user {test_user_id}.")
+                   else:
+                        print("Ratings data is empty, cannot select test user.")
+
+                   # --- Test similar books ---
+                   if not books.empty:
+                        # Get a valid ISBN known to be in the processed data and model
+                        test_isbn = books['ISBN'].iloc[0]
+                        print(f"\nTesting similar books for ISBN: {test_isbn}")
+                        similar_books = recommender.get_similar_books(test_isbn, books, n_recommendations=5)
+                        
+                        if similar_books:
+                             print("Similar books:")
+                             for book in similar_books:
+                                  print(f"- {book['title']} (ISBN: {book['isbn']}) by {book['author']} "
+                                        f"(similarity: {book['similarity_score']:.2f})")
+                        else:
+                             print(f"No similar books found for ISBN {test_isbn}.")
+                   else:
+                        print("Books data is empty, cannot select test ISBN.")
+              else:
+                   print("Model loading failed.")
+Use code with caution.
+Python
+Reasoning: Ensures that the test blocks actually test the functionality correctly by setting up the necessary prerequisites (data, model files).
+Step 9: Enhance Flask App Model Handling
+Problem: The Flask app hardcodes the model filename.
+File(s) to Modify: app.py
+Changes (Option: Use a latest_model.pkl Symlink/Copy):
+Update Notebook: After saving the timestamped model, also save or create a symlink named latest_model.pkl pointing to it.
+# In svd_training_colab.ipynb, after saving timestamped file:
+import os
+latest_filename = os.path.join(MODEL_DIR, "latest_model.pkl")
+try:
+    # Create a symbolic link (works on Linux/macOS)
+    # If it exists, remove it first
+    if os.path.lexists(latest_filename): # Use lexists for links
+         os.remove(latest_filename)
+    os.symlink(filename, latest_filename) 
+    print(f"✅ Symlink created: latest_model.pkl -> {os.path.basename(filename)}")
+    # Also download the latest_model.pkl if needed, or just the timestamped one
+    # files.download(latest_filename) 
+except OSError:
+     # Fallback for Windows or systems where symlinks fail: Copy the file
+     import shutil
+     try:
+          shutil.copyfile(filename, latest_filename)
+          print(f"✅ Copied model to: latest_model.pkl")
+          # files.download(latest_filename) 
+     except Exception as copy_e:
+          print(f"❌ Failed to create symlink or copy to latest_model.pkl: {copy_e}")
+Use code with caution.
+Python
+Modify app.py: Point the recommender to latest_model.pkl.
+# In app.py
+from src.config import PROCESSED_DATA_DIR, MODEL_DIR
+
+# ... Flask app setup ...
+
+# Initialize recommender using the generic 'latest' path
+model_path = MODEL_DIR / "latest_model.pkl" # Use the consistent name
+recommender = BookRecommender(model_path)
+if not recommender.load_model():
+    # Make error message more informative
+    print(f"FATAL ERROR: Failed to load model from {model_path}.")
+    print("Ensure 'latest_model.pkl' exists in the 'models' directory.")
+    print("It should point to or be a copy of the latest trained model.")
+    raise RuntimeError(f"Failed to load model from {model_path}.")
+
+# ... rest of the app ...
+Use code with caution.
+Python
+Reasoning: Decouples the application code from specific training run timestamps. The deployment process involves updating the latest_model.pkl link/copy.
+Step 10: Final Checks
+requirements.txt: Create or update requirements.txt:
+flask
+pandas
+numpy
+python-dotenv
+kaggle
+scikit-learn
+tqdm
+scipy 
+# Add other specific versions if necessary (e.g., pandas==1.5.3)
+Use code with caution.
+Install with pip install -r requirements.txt.
+Documentation: Add README.md explaining setup, training, running the app, and the purpose of each script/notebook. Add docstrings to functions where missing.
+Error Handling: Review try...except blocks. Log errors appropriately (logger.error, logger.exception). Provide informative messages to the user or console.
+Version Control: Use Git for tracking changes.

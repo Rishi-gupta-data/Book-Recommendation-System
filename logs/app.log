@@ -1,0 +1,513 @@
+2025-04-09 22:35:51,672 - src.recommender - ERROR - Model file not found: c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl
+2025-04-09 22:35:52,039 - werkzeug - INFO -  * Restarting with stat
+2025-04-09 22:35:57,026 - src.recommender - ERROR - Model file not found: c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl
+2025-04-09 22:35:57,465 - werkzeug - WARNING -  * Debugger is active!
+2025-04-09 22:35:57,480 - werkzeug - INFO -  * Debugger PIN: 893-434-323
+2025-04-09 22:35:57,664 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-04-09 22:36:07,034 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 22:36:07] "GET /?ide_webview_request_time=1744218367006 HTTP/1.1" 200 -
+2025-04-09 22:36:07,064 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 22:36:07] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-09 22:36:43,309 - src.recommender - ERROR - Model file not found: c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl
+2025-04-09 22:36:43,314 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 22:36:43] "POST /?ide_webview_request_time=1744218367006 HTTP/1.1" 200 -
+2025-04-09 22:36:43,340 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 22:36:43] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-09 22:37:10,891 - src.recommender - ERROR - Model file not found: c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl
+2025-04-09 22:37:11,234 - werkzeug - INFO -  * Restarting with stat
+2025-04-09 22:37:15,911 - src.recommender - ERROR - Model file not found: c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl
+2025-04-09 22:37:16,258 - werkzeug - WARNING -  * Debugger is active!
+2025-04-09 22:37:16,278 - werkzeug - INFO -  * Debugger PIN: 893-434-323
+2025-04-09 22:37:16,492 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-04-09 22:37:19,671 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 22:37:19] "GET / HTTP/1.1" 200 -
+2025-04-09 22:37:19,741 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 22:37:19] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-09 22:37:20,797 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 22:37:20] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-09 22:37:32,031 - src.recommender - ERROR - Model file not found: c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl
+2025-04-09 22:37:32,031 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 22:37:32] "POST / HTTP/1.1" 200 -
+2025-04-09 22:37:32,120 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 22:37:32] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-09 22:37:52,901 - src.recommender - ERROR - Model file not found: c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl
+2025-04-09 22:37:52,906 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 22:37:52] "POST / HTTP/1.1" 200 -
+2025-04-09 22:37:52,958 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 22:37:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-09 22:39:21,413 - werkzeug - INFO -  * Detected change in 'c:\\Users\\rishi\\py notes\\BookRecommendationSystem\\src\\webapp\\app.py', reloading
+2025-04-09 22:39:21,761 - werkzeug - INFO -  * Restarting with stat
+2025-04-09 22:39:26,197 - src.recommender - ERROR - Model file not found: c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl
+2025-04-09 22:39:27,035 - werkzeug - WARNING -  * Debugger is active!
+2025-04-09 22:39:27,046 - werkzeug - INFO -  * Debugger PIN: 893-434-323
+2025-04-09 22:39:27,179 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-04-09 22:39:51,749 - src.recommender - ERROR - Model file not found: c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl
+2025-04-09 22:39:51,776 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 22:39:51] "POST / HTTP/1.1" 200 -
+2025-04-09 22:39:51,803 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 22:39:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-09 22:39:59,808 - src.recommender - ERROR - Model file not found: c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl
+2025-04-09 22:39:59,808 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 22:39:59] "POST / HTTP/1.1" 200 -
+2025-04-09 22:39:59,842 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 22:39:59] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-09 22:40:09,379 - src.recommender - ERROR - Model file not found: c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl
+2025-04-09 22:40:09,384 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 22:40:09] "POST / HTTP/1.1" 200 -
+2025-04-09 22:40:09,408 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 22:40:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-09 22:42:34,188 - werkzeug - INFO -  * Detected change in 'c:\\Users\\rishi\\py notes\\BookRecommendationSystem\\src\\webapp\\app.py', reloading
+2025-04-09 22:42:34,510 - werkzeug - INFO -  * Restarting with stat
+2025-04-09 22:42:39,258 - src.recommender - ERROR - Model file not found: c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl
+2025-04-09 22:43:47,575 - src.recommender - ERROR - Model file not found: c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl
+2025-04-09 22:44:50,111 - src.recommender - ERROR - Error loading model: No module named 'numpy._core'
+2025-04-09 22:52:07,942 - src.recommender - ERROR - Error loading model: No module named 'numpy._core'
+2025-04-10 11:12:54,027 - __main__ - ERROR - FATAL ERROR: Failed to load model from c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl
+2025-04-10 11:12:54,027 - __main__ - ERROR - Ensure 'latest_model.pkl' exists in the 'models' directory
+2025-04-10 11:13:48,761 - __main__ - ERROR - FATAL ERROR: Failed to load model from c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl
+2025-04-10 11:13:48,761 - __main__ - ERROR - Ensure 'latest_model.pkl' exists in the 'models' directory
+2025-04-10 11:17:06,200 - __main__ - ERROR - No model files found in models directory
+2025-04-10 11:20:58,060 - __main__ - INFO - Successfully copied svd_model_20250409_125709.pkl to latest_model.pkl
+2025-04-10 11:21:35,096 - __main__ - ERROR - FATAL ERROR: Failed to load model from c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl
+2025-04-10 11:21:35,096 - __main__ - ERROR - Ensure 'latest_model.pkl' exists in the 'models' directory
+2025-04-10 11:24:27,459 - __main__ - INFO - Loading processed data...
+2025-04-10 11:24:29,379 - __main__ - INFO - Initializing recommender...
+2025-04-10 11:24:29,379 - __main__ - INFO - Attempting to load model from: c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl
+2025-04-10 11:24:29,379 - __main__ - ERROR - FATAL ERROR: Failed to load model from c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl
+2025-04-10 11:24:29,388 - __main__ - ERROR - Ensure 'latest_model.pkl' exists in the 'models' directory
+2025-04-10 11:25:28,138 - __main__ - INFO - Loading processed data...
+2025-04-10 11:25:29,125 - __main__ - INFO - -> Processed data loaded successfully
+2025-04-10 11:25:29,133 - __main__ - INFO - Initializing recommender...
+2025-04-10 11:25:29,135 - __main__ - INFO - Attempting to load model from: c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl
+2025-04-10 11:25:29,137 - __main__ - ERROR - FATAL ERROR: Failed to load model from c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl
+2025-04-10 11:25:29,137 - __main__ - ERROR - Ensure 'latest_model.pkl' exists in the 'models' directory
+2025-04-10 11:32:49,428 - __main__ - INFO - Loading processed data...
+2025-04-10 11:32:50,965 - __main__ - INFO - Processed data loaded successfully
+2025-04-10 11:32:50,965 - __main__ - INFO - Initializing recommender...
+2025-04-10 11:32:50,965 - __main__ - ERROR - Failed to load model from c:\Users\rishi\py notes\BookRecommendationSystem\models\latest_model.pkl.
+2025-04-16 15:50:56,991 - __main__ - INFO - Loading processed data...
+2025-04-16 15:50:57,757 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 15:50:57,757 - __main__ - INFO - Initializing recommender...
+2025-04-16 15:50:57,779 - __main__ - ERROR - Failed to load model from C:\Users\rishi\Downloads\BookRecommendationSystem\models\latest_model.pkl.
+This could be due to:
+1. File corruption
+2. Insufficient permissions
+3. Incompatible model format
+2025-04-16 15:53:22,900 - __main__ - INFO - Loading processed data...
+2025-04-16 15:53:23,407 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 15:53:23,409 - __main__ - INFO - Initializing recommender...
+2025-04-16 15:53:23,410 - __main__ - ERROR - Failed to load model from C:\Users\rishi\Downloads\BookRecommendationSystem\models\svd_model_20250409_125709.pkl.
+This could be due to:
+1. File corruption
+2. Insufficient permissions
+3. Incompatible model format
+2025-04-16 15:54:39,215 - __main__ - INFO - Loading processed data...
+2025-04-16 15:54:39,657 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 15:54:39,659 - __main__ - INFO - Initializing recommender...
+2025-04-16 15:54:39,659 - __main__ - ERROR - Failed to load model from C:\Users\rishi\Downloads\BookRecommendationSystem\models\svd_model_20250409_125709.pkl.
+This could be due to:
+1. File corruption
+2. Insufficient permissions
+3. Incompatible model format
+2025-04-16 15:57:59,975 - __main__ - INFO - Loading processed data...
+2025-04-16 15:58:00,760 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 15:58:00,760 - __main__ - INFO - Initializing recommender...
+2025-04-16 15:58:00,761 - __main__ - ERROR - Failed to load model from models\svd_model_20250409_125709.pkl.
+This could be due to:
+1. File corruption
+2. Insufficient permissions
+3. Incompatible model format
+2025-04-16 16:04:13,137 - __main__ - INFO - Loading processed data...
+2025-04-16 16:04:13,556 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 16:04:13,556 - __main__ - INFO - Initializing recommender...
+2025-04-16 16:04:13,556 - __main__ - ERROR - Failed to load model from models\latest_model.pkl.
+This could be due to:
+1. File corruption
+2. Insufficient permissions
+3. Incompatible model format
+2025-04-16 16:20:38,994 - __main__ - INFO - Loading processed data...
+2025-04-16 16:20:39,491 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 16:20:39,491 - __main__ - INFO - Initializing recommender...
+2025-04-16 16:20:39,491 - __main__ - ERROR - Model file not found: models\latest_model.pkl
+Please ensure:
+1. The model has been trained
+2. The model file exists in the models directory
+2025-04-16 16:25:24,106 - __main__ - INFO - Loading processed data...
+2025-04-16 16:25:24,577 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 16:25:24,577 - __main__ - INFO - Initializing recommender...
+2025-04-16 16:25:24,579 - __main__ - WARNING - Failed to load pickle model from models\latest_model.pkl
+2025-04-16 16:25:24,579 - __main__ - ERROR - Neither pickle model (models\latest_model.pkl) nor portable model directory (models\portable) found
+2025-04-16 16:27:23,669 - __main__ - INFO - Loading processed data...
+2025-04-16 16:27:24,166 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 16:27:24,166 - __main__ - INFO - Initializing recommender...
+2025-04-16 16:27:24,167 - __main__ - WARNING - Failed to load pickle model from models\latest_model.pkl
+2025-04-16 16:27:24,167 - __main__ - ERROR - Neither pickle model (models\latest_model.pkl) nor portable model directory (models\portable) found
+2025-04-16 16:29:16,355 - __main__ - INFO - Loading processed data...
+2025-04-16 16:29:16,902 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 16:29:16,902 - __main__ - INFO - Initializing recommender...
+2025-04-16 16:29:16,902 - __main__ - WARNING - Failed to load pickle model from models\latest_model.pkl
+2025-04-16 16:29:16,902 - __main__ - INFO - Attempting to load model from portable format...
+2025-04-16 16:29:16,978 - __main__ - INFO - Model loaded successfully
+2025-04-16 16:29:17,043 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-04-16 16:29:20,979 - app - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "app.py", line 29, in wrapped
+    return f(*args, **kwargs)
+  File "app.py", line 121, in index
+    return render_template(
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\jinja2\environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\jinja2\environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\jinja2\environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\jinja2\loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index.html
+2025-04-16 16:29:20,985 - __main__ - ERROR - Internal server error
+Traceback (most recent call last):
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "app.py", line 29, in wrapped
+    return f(*args, **kwargs)
+  File "app.py", line 121, in index
+    return render_template(
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\jinja2\environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\jinja2\environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\jinja2\environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\jinja2\loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index.html
+2025-04-16 16:29:21,014 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:29:21] "[35m[1mGET /?ide_webview_request_time=1744801160944 HTTP/1.1[0m" 500 -
+2025-04-16 16:29:21,047 - werkzeug - ERROR - Error on request:
+Traceback (most recent call last):
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\rishi\Downloads\BookRecommendationSystem\app.py", line 29, in wrapped
+    return f(*args, **kwargs)
+  File "C:\Users\rishi\Downloads\BookRecommendationSystem\app.py", line 121, in index
+    return render_template(
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\jinja2\environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\jinja2\environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\jinja2\environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\jinja2\loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\werkzeug\serving.py", line 319, in run_wsgi
+    execute(self.server.app)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\werkzeug\serving.py", line 308, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\app.py", line 2088, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\app.py", line 1437, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "C:\Users\rishi\Downloads\BookRecommendationSystem\app.py", line 177, in internal_error
+    return render_template('500.html'), 500
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\jinja2\environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\jinja2\environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\jinja2\environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\jinja2\loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 500.html
+2025-04-16 16:30:35,122 - __main__ - INFO - Loading processed data...
+2025-04-16 16:30:35,583 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 16:30:35,583 - __main__ - INFO - Initializing recommender...
+2025-04-16 16:30:35,585 - __main__ - WARNING - Failed to load pickle model from models\latest_model.pkl
+2025-04-16 16:30:35,585 - __main__ - INFO - Attempting to load model from portable format...
+2025-04-16 16:30:35,651 - __main__ - INFO - Model loaded successfully
+2025-04-16 16:30:35,706 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-04-16 16:30:36,221 - app - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "app.py", line 29, in wrapped
+    return f(*args, **kwargs)
+  File "app.py", line 121, in index
+    return render_template(
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\jinja2\environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\jinja2\environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\jinja2\environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\jinja2\loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index.html
+2025-04-16 16:30:36,221 - __main__ - ERROR - Internal server error
+Traceback (most recent call last):
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "app.py", line 29, in wrapped
+    return f(*args, **kwargs)
+  File "app.py", line 121, in index
+    return render_template(
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\jinja2\environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\jinja2\environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\jinja2\environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\jinja2\loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\lib\site-packages\flask\templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index.html
+2025-04-16 16:30:36,242 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:30:36] "[35m[1mGET /?ide_webview_request_time=1744801236213 HTTP/1.1[0m" 500 -
+2025-04-16 16:30:36,353 - werkzeug - ERROR - Error on request:
+Traceback (most recent call last):
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\rishi\Downloads\BookRecommendationSystem\app.py", line 29, in wrapped
+    return f(*args, **kwargs)
+  File "C:\Users\rishi\Downloads\BookRecommendationSystem\app.py", line 121, in index
+    return render_template(
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\jinja2\environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\jinja2\environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\jinja2\environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\jinja2\loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\werkzeug\serving.py", line 319, in run_wsgi
+    execute(self.server.app)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\werkzeug\serving.py", line 308, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\app.py", line 2088, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\app.py", line 1437, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "C:\Users\rishi\Downloads\BookRecommendationSystem\app.py", line 177, in internal_error
+    return render_template('500.html'), 500
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\jinja2\environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\jinja2\environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\jinja2\environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\jinja2\loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\rishi\anaconda3\envs\book_recommender\Lib\site-packages\flask\templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 500.html
+2025-04-16 16:41:57,274 - __main__ - INFO - Loading processed data...
+2025-04-16 16:41:57,697 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 16:41:57,697 - __main__ - INFO - Initializing recommender...
+2025-04-16 16:41:57,697 - __main__ - WARNING - Failed to load pickle model from models\latest_model.pkl
+2025-04-16 16:41:57,697 - __main__ - INFO - Attempting to load model from portable format...
+2025-04-16 16:41:57,831 - __main__ - INFO - Model loaded successfully
+2025-04-16 16:41:57,909 - werkzeug - INFO -  * Restarting with stat
+2025-04-16 16:42:00,877 - __main__ - INFO - Loading processed data...
+2025-04-16 16:42:01,425 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 16:42:01,425 - __main__ - INFO - Initializing recommender...
+2025-04-16 16:42:01,433 - __main__ - WARNING - Failed to load pickle model from C:\Users\rishi\Downloads\BookRecommendationSystem\models\latest_model.pkl
+2025-04-16 16:42:01,433 - __main__ - INFO - Attempting to load model from portable format...
+2025-04-16 16:42:01,520 - __main__ - INFO - Model loaded successfully
+2025-04-16 16:42:01,569 - werkzeug - WARNING -  * Debugger is active!
+2025-04-16 16:42:01,574 - werkzeug - INFO -  * Debugger PIN: 373-223-572
+2025-04-16 16:42:01,666 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-04-16 16:42:05,135 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:42:05] "GET /?ide_webview_request_time=1744801925110 HTTP/1.1" 200 -
+2025-04-16 16:42:05,153 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:42:05] "GET /frontend/style.css HTTP/1.1" 200 -
+2025-04-16 16:42:29,443 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:42:29] "POST /?ide_webview_request_time=1744801925110 HTTP/1.1" 200 -
+2025-04-16 16:42:29,468 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:42:29] "[36mGET /frontend/style.css HTTP/1.1[0m" 304 -
+2025-04-16 16:42:42,708 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:42:42] "POST /?ide_webview_request_time=1744801925110 HTTP/1.1" 200 -
+2025-04-16 16:42:42,734 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:42:42] "[36mGET /frontend/style.css HTTP/1.1[0m" 304 -
+2025-04-16 16:43:18,789 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:43:18] "POST /?ide_webview_request_time=1744801925110 HTTP/1.1" 200 -
+2025-04-16 16:43:18,812 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:43:18] "[36mGET /frontend/style.css HTTP/1.1[0m" 304 -
+2025-04-16 16:45:17,702 - __main__ - INFO - Loading processed data...
+2025-04-16 16:45:18,659 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 16:45:18,659 - __main__ - INFO - Initializing recommender...
+2025-04-16 16:45:18,666 - __main__ - WARNING - Failed to load pickle model from models\latest_model.pkl
+2025-04-16 16:45:18,666 - __main__ - INFO - Attempting to load model from portable format...
+2025-04-16 16:45:19,117 - __main__ - INFO - Model loaded successfully
+2025-04-16 16:45:19,259 - werkzeug - INFO -  * Restarting with stat
+2025-04-16 16:45:23,631 - __main__ - INFO - Loading processed data...
+2025-04-16 16:45:24,256 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 16:45:24,256 - __main__ - INFO - Initializing recommender...
+2025-04-16 16:45:24,256 - __main__ - WARNING - Failed to load pickle model from C:\Users\rishi\Downloads\BookRecommendationSystem\models\latest_model.pkl
+2025-04-16 16:45:24,256 - __main__ - INFO - Attempting to load model from portable format...
+2025-04-16 16:45:24,347 - __main__ - INFO - Model loaded successfully
+2025-04-16 16:45:24,413 - werkzeug - WARNING -  * Debugger is active!
+2025-04-16 16:45:24,427 - werkzeug - INFO -  * Debugger PIN: 373-223-572
+2025-04-16 16:45:24,579 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-04-16 16:46:15,498 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:46:15] "GET / HTTP/1.1" 200 -
+2025-04-16 16:46:15,554 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:46:15] "GET /frontend/style.css HTTP/1.1" 200 -
+2025-04-16 16:46:16,355 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:46:16] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2025-04-16 16:46:43,259 - werkzeug - INFO -  * Detected change in 'C:\\Users\\rishi\\Downloads\\BookRecommendationSystem\\app.py', reloading
+2025-04-16 16:46:43,527 - werkzeug - INFO -  * Restarting with stat
+2025-04-16 16:48:47,986 - __main__ - INFO - Loading processed data...
+2025-04-16 16:48:48,529 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 16:48:48,529 - __main__ - INFO - Initializing recommender...
+2025-04-16 16:48:48,529 - __main__ - WARNING - Failed to load pickle model from models\latest_model.pkl
+2025-04-16 16:48:48,532 - __main__ - INFO - Attempting to load model from portable format...
+2025-04-16 16:48:48,661 - __main__ - INFO - Model loaded successfully
+2025-04-16 16:48:48,729 - werkzeug - INFO -  * Restarting with stat
+2025-04-16 16:48:53,079 - __main__ - INFO - Loading processed data...
+2025-04-16 16:48:53,842 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 16:48:53,842 - __main__ - INFO - Initializing recommender...
+2025-04-16 16:48:53,842 - __main__ - WARNING - Failed to load pickle model from C:\Users\rishi\Downloads\BookRecommendationSystem\models\latest_model.pkl
+2025-04-16 16:48:53,842 - __main__ - INFO - Attempting to load model from portable format...
+2025-04-16 16:48:53,974 - __main__ - INFO - Model loaded successfully
+2025-04-16 16:48:54,046 - werkzeug - WARNING -  * Debugger is active!
+2025-04-16 16:48:54,052 - werkzeug - INFO -  * Debugger PIN: 373-223-572
+2025-04-16 16:48:54,245 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-04-16 16:48:54,629 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:48:54] "GET / HTTP/1.1" 200 -
+2025-04-16 16:48:54,667 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:48:54] "[36mGET /frontend/style.css HTTP/1.1[0m" 304 -
+2025-04-16 16:48:54,929 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:48:54] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2025-04-16 16:49:01,859 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:49:01] "POST / HTTP/1.1" 200 -
+2025-04-16 16:49:01,886 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:49:01] "[36mGET /frontend/style.css HTTP/1.1[0m" 304 -
+2025-04-16 16:49:02,204 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:49:02] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2025-04-16 16:49:13,751 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:49:13] "POST / HTTP/1.1" 200 -
+2025-04-16 16:49:13,770 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:49:13] "[36mGET /frontend/style.css HTTP/1.1[0m" 304 -
+2025-04-16 16:49:14,086 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:49:14] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2025-04-16 16:49:21,566 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:49:21] "POST / HTTP/1.1" 200 -
+2025-04-16 16:49:21,600 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:49:21] "[36mGET /frontend/style.css HTTP/1.1[0m" 304 -
+2025-04-16 16:49:21,853 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:49:21] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2025-04-16 16:49:58,636 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:49:58] "POST / HTTP/1.1" 200 -
+2025-04-16 16:49:58,666 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:49:58] "[36mGET /frontend/style.css HTTP/1.1[0m" 304 -
+2025-04-16 16:49:59,037 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:49:59] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2025-04-16 16:50:43,880 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:50:43] "POST / HTTP/1.1" 200 -
+2025-04-16 16:50:43,907 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:50:43] "[36mGET /frontend/style.css HTTP/1.1[0m" 304 -
+2025-04-16 16:50:44,252 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:50:44] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2025-04-16 16:51:09,232 - __main__ - INFO - Loading processed data...
+2025-04-16 16:51:09,945 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 16:51:09,945 - __main__ - INFO - Initializing recommender...
+2025-04-16 16:51:09,945 - __main__ - WARNING - Failed to load pickle model from models\latest_model.pkl
+2025-04-16 16:51:09,945 - __main__ - INFO - Attempting to load model from portable format...
+2025-04-16 16:51:10,080 - __main__ - INFO - Model loaded successfully
+2025-04-16 16:51:10,184 - werkzeug - INFO -  * Restarting with stat
+2025-04-16 16:51:14,274 - __main__ - INFO - Loading processed data...
+2025-04-16 16:51:14,886 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 16:51:14,886 - __main__ - INFO - Initializing recommender...
+2025-04-16 16:51:14,886 - __main__ - WARNING - Failed to load pickle model from C:\Users\rishi\Downloads\BookRecommendationSystem\models\latest_model.pkl
+2025-04-16 16:51:14,886 - __main__ - INFO - Attempting to load model from portable format...
+2025-04-16 16:51:15,043 - __main__ - INFO - Model loaded successfully
+2025-04-16 16:51:15,115 - werkzeug - WARNING -  * Debugger is active!
+2025-04-16 16:51:15,131 - werkzeug - INFO -  * Debugger PIN: 373-223-572
+2025-04-16 16:51:15,294 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-04-16 16:51:23,794 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:51:23] "POST / HTTP/1.1" 200 -
+2025-04-16 16:51:23,819 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:51:23] "[36mGET /frontend/style.css HTTP/1.1[0m" 304 -
+2025-04-16 16:51:24,073 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:51:24] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2025-04-16 16:52:34,951 - werkzeug - INFO -  * Detected change in 'C:\\Users\\rishi\\Downloads\\BookRecommendationSystem\\app.py', reloading
+2025-04-16 16:52:35,211 - werkzeug - INFO -  * Restarting with stat
+2025-04-16 16:52:39,846 - __main__ - INFO - Loading processed data...
+2025-04-16 16:52:40,592 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 16:52:40,595 - __main__ - INFO - Initializing recommender...
+2025-04-16 16:52:40,595 - __main__ - WARNING - Failed to load pickle model from C:\Users\rishi\Downloads\BookRecommendationSystem\models\latest_model.pkl
+2025-04-16 16:52:40,596 - __main__ - INFO - Attempting to load model from portable format...
+2025-04-16 16:52:40,699 - __main__ - INFO - Model loaded successfully
+2025-04-16 16:52:40,761 - werkzeug - WARNING -  * Debugger is active!
+2025-04-16 16:52:40,774 - werkzeug - INFO -  * Debugger PIN: 373-223-572
+2025-04-16 16:52:40,911 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-04-16 16:53:03,727 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:53:03] "POST / HTTP/1.1" 200 -
+2025-04-16 16:53:03,757 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:53:03] "GET /frontend/style.css HTTP/1.1" 200 -
+2025-04-16 16:53:04,047 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:53:04] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-16 16:53:21,827 - __main__ - INFO - Loading processed data...
+2025-04-16 16:53:22,365 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 16:53:22,365 - __main__ - INFO - Initializing recommender...
+2025-04-16 16:53:22,365 - __main__ - WARNING - Failed to load pickle model from models\latest_model.pkl
+2025-04-16 16:53:22,365 - __main__ - INFO - Attempting to load model from portable format...
+2025-04-16 16:53:22,557 - __main__ - INFO - Model loaded successfully
+2025-04-16 16:53:22,626 - werkzeug - INFO -  * Restarting with stat
+2025-04-16 16:53:26,689 - __main__ - INFO - Loading processed data...
+2025-04-16 16:53:27,344 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 16:53:27,350 - __main__ - INFO - Initializing recommender...
+2025-04-16 16:53:27,350 - __main__ - WARNING - Failed to load pickle model from C:\Users\rishi\Downloads\BookRecommendationSystem\models\latest_model.pkl
+2025-04-16 16:53:27,350 - __main__ - INFO - Attempting to load model from portable format...
+2025-04-16 16:53:27,435 - __main__ - INFO - Model loaded successfully
+2025-04-16 16:53:27,541 - werkzeug - WARNING -  * Debugger is active!
+2025-04-16 16:53:27,557 - werkzeug - INFO -  * Debugger PIN: 373-223-572
+2025-04-16 16:53:27,777 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-04-16 16:53:39,590 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:53:39] "POST / HTTP/1.1" 200 -
+2025-04-16 16:53:39,629 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:53:39] "[36mGET /frontend/style.css HTTP/1.1[0m" 304 -
+2025-04-16 16:53:45,206 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:53:45] "POST / HTTP/1.1" 200 -
+2025-04-16 16:53:45,236 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:53:45] "[36mGET /frontend/style.css HTTP/1.1[0m" 304 -
+2025-04-16 16:55:03,103 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:55:03] "POST / HTTP/1.1" 200 -
+2025-04-16 16:55:03,135 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:55:03] "[36mGET /frontend/style.css HTTP/1.1[0m" 304 -

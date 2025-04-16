@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="hero">
+        <h1><i class="fas fa-book-open-reader"></i> Book Recommender</h1>
+        <p class="subtitle">Discover your next favorite book</p>
+    </div>
+
+    <div class="container">
+        <div class="card-container">
+            <!-- User Recommendations Card -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-user-circle"></i>
+                    <h2>Personal Recommendations</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" class="recommendation-form">
+                        <div class="form-group">
+                            <label for="user_id">User ID:</label>
+                            <div class="input-group">
+                                <input type="number" name="user_id" id="user_id" required 
+                                       placeholder="Enter your user ID" aria-label="User ID input"
+                                       min="1">
+                                <button type="submit" class="btn-primary">
+                                    <i class="fas fa-search"></i> Get Recommendations
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="valid-users" aria-label="List of valid user IDs">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Valid User IDs:</span>
+                        <div class="user-id-list">{{ valid_users|join(', ') }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Similar Books Card -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-book-open"></i>
+                    <h2>Find Similar Books</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" class="similar-books-form">
+                        <div class="form-group">
+                            <label for="isbn">ISBN:</label>
+                            <div class="input-group">
+                                <input type="text" name="isbn" id="isbn" required 
+                                       placeholder="Enter book ISBN" aria-label="ISBN input"
+                                       pattern="[0-9X-]{10,13}">
+                                <button type="submit" class="btn-primary">
+                                    <i class="fas fa-search"></i> Find Similar
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        {% if error %}
+        <div class="error-message" role="alert">
+            <i class="fas fa-exclamation-circle"></i>
+            <span>{{ error }}</span>
+            <button class="close-btn" onclick="this.parentElement.style.display='none'">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        {% endif %}
+
+        {% if recommendations %}
+        <div class="results-card">
+            <div class="card-header">
+                <i class="fas fa-star"></i>
+                <h2>Recommended Books</h2>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Year</th>
+                            <th>Publisher</th>
+                            <th>Predicted Rating</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in recommendations %}
+                        <tr>
+                            <td>{{ book.title }}</td>
+                            <td>{{ book.author }}</td>
+                            <td>{{ book.year }}</td>
+                            <td>{{ book.publisher }}</td>
+                            <td class="rating">
+                                <span class="stars" data-rating="{{ book.predicted_rating }}">
+                                    {% for i in range(5) %}
+                                        {% if i < book.predicted_rating|int %}
+                                            <i class="fas fa-star"></i>
+                                        {% else %}
+                                            <i class="far fa-star"></i>
+                                        {% endif %}
+                                    {% endfor %}
+                                </span>
+                                {{ "%.1f"|format(book.predicted_rating) }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if similar_books %}
+        <div class="results-card">
+            <div class="card-header">
+                <i class="fas fa-books"></i>
+                <h2>Similar Books</h2>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Year</th>
+                            <th>Publisher</th>
+                            <th>Similarity Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in similar_books %}
+                        <tr>
+                            <td>{{ book.title }}</td>
+                            <td>{{ book.author }}</td>
+                            <td>{{ book.year }}</td>
+                            <td>{{ book.publisher }}</td>
+                            <td class="similarity">
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: {{ '%.0f'|format(book.similarity_score * 100) }}%"></div>
+                                </div>
+                                {{ "%.2f"|format(book.similarity_score) }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <footer>
+        <p>© 2024 Book Recommender System | <a href="#" class="footer-link">About</a> | <a href="#" class="footer-link">API</a></p>
+        <p class="author-info">
+            Created by <a href="https://github.com/Rishi-gupta-data" class="footer-link" target="_blank" rel="noopener noreferrer">Rishi Gupta</a>
+        </p>
+    </footer>
+
+    <script>
+        // Add loading state to buttons
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function() {
+                const btn = this.querySelector('button');
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            });
+        });
+    </script>
+</body>
+</html>
