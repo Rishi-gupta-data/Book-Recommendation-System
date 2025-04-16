@@ -551,3 +551,42 @@ jinja2.exceptions.TemplateNotFound: 500.html
 2025-04-16 17:40:02,890 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 17:40:02] "[36mGET /frontend/style.css HTTP/1.1[0m" 304 -
 2025-04-16 17:40:32,631 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 17:40:32] "POST / HTTP/1.1" 200 -
 2025-04-16 17:40:32,662 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 17:40:32] "[36mGET /frontend/style.css HTTP/1.1[0m" 304 -
+2025-04-16 18:05:47,787 - __main__ - INFO - Loading processed data...
+2025-04-16 18:05:49,617 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 18:05:49,617 - __main__ - INFO - Initializing recommender...
+2025-04-16 18:05:49,619 - __main__ - WARNING - Failed to load pickle model from models\latest_model.pkl
+2025-04-16 18:05:49,619 - __main__ - INFO - Attempting to load model from portable format...
+2025-04-16 18:05:49,727 - __main__ - INFO - Model loaded successfully
+2025-04-16 18:05:49,812 - werkzeug - INFO -  * Restarting with stat
+2025-04-16 18:05:53,747 - __main__ - INFO - Loading processed data...
+2025-04-16 18:05:55,154 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 18:05:55,154 - __main__ - INFO - Initializing recommender...
+2025-04-16 18:05:55,154 - __main__ - WARNING - Failed to load pickle model from C:\Users\rishi\Downloads\BookRecommendationSystem\models\latest_model.pkl
+2025-04-16 18:05:55,168 - __main__ - INFO - Attempting to load model from portable format...
+2025-04-16 18:05:55,247 - __main__ - INFO - Model loaded successfully
+2025-04-16 18:05:55,302 - werkzeug - WARNING -  * Debugger is active!
+2025-04-16 18:05:55,312 - werkzeug - INFO -  * Debugger PIN: 373-223-572
+2025-04-16 18:05:55,603 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-04-16 18:06:16,081 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 18:06:16] "GET / HTTP/1.1" 200 -
+2025-04-16 18:06:16,149 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 18:06:16] "[36mGET /frontend/style.css HTTP/1.1[0m" 304 -
+2025-04-16 18:06:36,561 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 18:06:36] "POST / HTTP/1.1" 200 -
+2025-04-16 18:06:36,600 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 18:06:36] "[36mGET /frontend/style.css HTTP/1.1[0m" 304 -
+2025-04-16 18:12:04,079 - __main__ - INFO - Loading processed data...
+2025-04-16 18:12:06,171 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 18:12:06,175 - __main__ - INFO - Initializing recommender...
+2025-04-16 18:12:06,175 - __main__ - WARNING - Failed to load pickle model from models\latest_model.pkl
+2025-04-16 18:12:06,177 - __main__ - INFO - Attempting to load model from portable format...
+2025-04-16 18:12:06,351 - __main__ - INFO - Model loaded successfully
+2025-04-16 18:12:06,460 - werkzeug - INFO -  * Restarting with stat
+2025-04-16 18:12:10,981 - __main__ - INFO - Loading processed data...
+2025-04-16 18:12:12,325 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 18:12:12,325 - __main__ - INFO - Initializing recommender...
+2025-04-16 18:12:12,327 - __main__ - WARNING - Failed to load pickle model from C:\Users\rishi\Downloads\BookRecommendationSystem\models\latest_model.pkl
+2025-04-16 18:12:12,327 - __main__ - INFO - Attempting to load model from portable format...
+2025-04-16 18:12:12,404 - __main__ - INFO - Model loaded successfully
+2025-04-16 18:12:12,454 - werkzeug - WARNING -  * Debugger is active!
+2025-04-16 18:12:12,465 - werkzeug - INFO -  * Debugger PIN: 373-223-572
+2025-04-16 18:12:12,617 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-04-16 18:12:16,057 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 18:12:16] "GET / HTTP/1.1" 200 -
+2025-04-16 18:12:16,126 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 18:12:16] "GET /frontend/style.css HTTP/1.1" 200 -
+2025-04-16 18:12:17,598 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 18:12:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
