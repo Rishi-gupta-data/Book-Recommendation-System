@@ -3,10 +3,7 @@ import numpy as np
 import logging
 import logging.config
 from pathlib import Path
-<<<<<<< HEAD
-=======
 import json
->>>>>>> 7b5d19f (Initial commit: Book Recommendation System with collaborative filtering)
 from typing import List, Dict, Optional, Union
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
@@ -19,14 +16,10 @@ logger = logging.getLogger(__name__)
 class BookRecommender:
     def __init__(self, model_path: Optional[Union[str, Path]] = None):
         """Initialize the recommender system."""
-<<<<<<< HEAD
-        self.model_path = Path(model_path) if model_path else MODEL_DIR / "latest_model.pkl"
-=======
         if model_path:
             self.model_path = Path(model_path)
         else:
             self.model_path = Path(__file__).parent.parent / "models" / "latest_model.pkl"
->>>>>>> 7b5d19f (Initial commit: Book Recommendation System with collaborative filtering)
         self.U = None
         self.Vt = None
         self.user_mapping = None
@@ -75,8 +68,6 @@ class BookRecommender:
             logger.exception(f"Unexpected error loading model: {str(e)}")
             return False
 
-<<<<<<< HEAD
-=======
     def load_from_portable(self, directory: Union[str, Path]) -> bool:
         """Load model from portable format (numpy arrays and JSON files)."""
         try:
@@ -97,7 +88,6 @@ class BookRecommender:
             logger.exception("❌ Failed to load from portable model")
             return False
 
->>>>>>> 7b5d19f (Initial commit: Book Recommendation System with collaborative filtering)
     def get_recommendations(
         self,
         user_id: int,

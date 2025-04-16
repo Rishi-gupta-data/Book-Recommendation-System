@@ -511,3 +511,21 @@ jinja2.exceptions.TemplateNotFound: 500.html
 2025-04-16 16:53:45,236 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:53:45] "[36mGET /frontend/style.css HTTP/1.1[0m" 304 -
 2025-04-16 16:55:03,103 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:55:03] "POST / HTTP/1.1" 200 -
 2025-04-16 16:55:03,135 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 16:55:03] "[36mGET /frontend/style.css HTTP/1.1[0m" 304 -
+2025-04-16 17:18:54,003 - __main__ - INFO - Loading processed data...
+2025-04-16 17:18:55,196 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 17:18:55,196 - __main__ - INFO - Initializing recommender...
+2025-04-16 17:18:55,196 - __main__ - WARNING - Failed to load pickle model from models\latest_model.pkl
+2025-04-16 17:18:55,196 - __main__ - INFO - Attempting to load model from portable format...
+2025-04-16 17:18:55,709 - __main__ - INFO - Model loaded successfully
+2025-04-16 17:18:55,823 - werkzeug - INFO -  * Restarting with stat
+2025-04-16 17:18:59,818 - __main__ - INFO - Loading processed data...
+2025-04-16 17:19:01,169 - __main__ - INFO - Processed data loaded successfully
+2025-04-16 17:19:01,169 - __main__ - INFO - Initializing recommender...
+2025-04-16 17:19:01,169 - __main__ - WARNING - Failed to load pickle model from C:\Users\rishi\Downloads\BookRecommendationSystem\models\latest_model.pkl
+2025-04-16 17:19:01,169 - __main__ - INFO - Attempting to load model from portable format...
+2025-04-16 17:19:01,279 - __main__ - INFO - Model loaded successfully
+2025-04-16 17:19:01,366 - werkzeug - WARNING -  * Debugger is active!
+2025-04-16 17:19:01,375 - werkzeug - INFO -  * Debugger PIN: 373-223-572
+2025-04-16 17:19:01,571 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-04-16 17:19:08,702 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 17:19:08] "GET /?ide_webview_request_time=1744804148661 HTTP/1.1" 200 -
+2025-04-16 17:19:08,722 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 17:19:08] "GET /frontend/style.css HTTP/1.1" 200 -
