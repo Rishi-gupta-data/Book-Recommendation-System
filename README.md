@@ -28,21 +28,21 @@ A sophisticated book recommendation engine powered by collaborative filtering te
 
 📦 **BookRecommendationSystem/**  
 │  
-├── 📂 **data/**                      # Dataset files  
-│   ├── 📝 **raw/**                    # Original unprocessed data  
-│   └── 📊 **processed/**              # Cleaned & ready-to-use data  
+├── 📂 **data/**                        
+│   ├── 📝 **raw/**                   
+│   └── 📊 **processed/**             
 │  
-├── 📂 **frontend/**                  # Web interface  
-│   ├── 🎨 **static/**                 # CSS, JS, image assets  
-│   └── 📄 **templates/**              # HTML templates (e.g., `index.html`)  
+├── 📂 **frontend/**                  
+│   ├── 🎨 **static/**                
+│   └── 📄 **templates/**             
 │  
-├── 💾 **models/**                    # Trained models (e.g., `SVD.pkl`)  
+├── 💾 **models/**                      
 │  
-├── 📓 **notebooks/**                 # Jupyter Notebooks for experimentation  
+├── 📓 **notebooks/**                   
 │  
-├── 🔧 **src/**                       # Source code (data processing, recommendation logic)  
+├── 🔧 **src/**                         
 │  
-└── 📝 **app.py**                     # Main Flask application entry point  
+└── 📝 **app.py**                       
 
 ---
 
