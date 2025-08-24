@@ -75,29 +75,6 @@ flowchart TD
     F:::analysis
     G:::process
 ````
-
-flowchart TD
-    A([📝 User Input: Book/ISBN/User ID]):::start --> B{{📊 Data Processing}}
-    B --> C[🧹 Clean & Preprocess Data]
-    C --> D[📦 Load Models: KNN / SVD]
-    D --> E[🤖 Generate Recommendations]
-    E --> F[📈 Evaluate with Metrics]
-    E --> G[🌐 Render Web Interface]
-    G --> H([📚 Display Recommended Books]):::end_node
-
-    classDef start fill:#00b894,stroke:#fff,color:#fff,stroke-width:2px
-    classDef process fill:#0984e3,stroke:#fff,color:#fff
-    classDef decision fill:#fdcb6e,stroke:#2d3436,color:#2d3436
-    classDef analysis fill:#6c5ce7,stroke:#fff,color:#fff
-    classDef end_node fill:#d63031,stroke:#fff,color:#fff,stroke-width:2px
-
-    B:::decision
-    C:::process
-    D:::process
-    E:::process
-    F:::analysis
-    G:::process                       
-'''
 ---
 ## 🧠 Models Used
 
