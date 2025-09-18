@@ -122,6 +122,14 @@ classDef end_node fill:#d63031,stroke:#fff,color:#fff,stroke-width:2px;
     👉 [http://localhost:5000](http://localhost:5000)
 
 ---
+## 📈 Evaluation Metrics
+
+**RMSE & MAE** → to measure prediction errors.
+
+**Precision@K & Recall@K** → to evaluate recommendation accuracy.
+
+**Hit Rate** → to measure how often recommended books match user preferences.
+
 
 ## 📸 Screenshots
 
