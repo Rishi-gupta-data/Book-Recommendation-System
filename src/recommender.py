@@ -53,8 +53,10 @@ class BookRecommender:
                 return False
 
             logger.info("Assigning model components...")
+            # MATDIS: Matriks - U dan Vt adalah matriks hasil dekomposisi SVD
             self.U = model_info['U']
             self.Vt = model_info['Vt']
+            # MATDIS: Fungsi Bijektif - memetakan user ID asli ke indeks unik (0..n-1)
             self.user_mapping = model_info['user_mapping']
             self.item_mapping = model_info['item_mapping']
             
@@ -108,9 +110,11 @@ class BookRecommender:
             user_idx = self.user_mapping[user_id]
             
             # Calculate predictions for this user only
+            # MATDIS: Dot Product - perkalian vektor user dengan matriks item
             user_predictions = np.dot(self.U[user_idx, :], self.Vt)
             
             # Get top N recommendations
+            # MATDIS: Pengurutan - argsort mengurutkan nilai prediksi untuk mengambil top-N
             top_n_idx = np.argsort(user_predictions)[::-1]
             
             recommendations = []
@@ -171,6 +175,7 @@ class BookRecommender:
             target_vector = self.Vt[:, item_idx].reshape(1, -1)
             
             # Calculate cosine similarity
+            # MATDIS: Cosine Similarity - mengukur kemiripan antar vektor item
             similarities = cosine_similarity(target_vector, self.Vt.T).flatten()
             
             # Get top N similar books
